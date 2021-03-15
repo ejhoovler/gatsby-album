@@ -2,8 +2,6 @@ import React from "react";
 
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -30,33 +28,8 @@ export default function Hero() {
           color="textPrimary"
           gutterBottom
         >
-          Gatsby + Material UI
+          Leelees Wreaths & Decor
         </Typography>
-        <Typography variant="h5" align="center" color="textSecondary" paragraph>
-          An impeccable pairing
-        </Typography>
-        <div className={classes.heroButtons}>
-          <Grid container spacing={2} justify="center">
-            <Grid item>
-              <Button
-                href="https://material-ui.com"
-                variant="contained"
-                color="primary"
-              >
-                Material-UI
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                href="https://www.gatsbyjs.org"
-                variant="outlined"
-                color="primary"
-              >
-                Gatsby JS
-              </Button>
-            </Grid>
-          </Grid>
-        </div>
       </Container>
     </div>
   );

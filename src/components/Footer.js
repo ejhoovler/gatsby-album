@@ -16,24 +16,12 @@ export default function Footer() {
   return (
     <footer className={classes.footer}>
       <Typography variant="h6" align="center" gutterBottom>
-        Gatsby Material Album
-      </Typography>
-      <Typography
-        variant="subtitle1"
-        align="center"
-        color="textSecondary"
-        component="p"
-      >
-        An impeccable pairing
+        Leelees Wreaths & Decor
       </Typography>
       <Typography variant="body2" color="textSecondary" align="center">
         {"Built with "}
         <a color="inherit" href="https://material-ui.com/">
           Material-UI
-        </a>
-        {" by "}
-        <a color="inherit" href="https://github.com/joeTrubenstein">
-          @JoeTrubenstein
         </a>
       </Typography>
     </footer>
