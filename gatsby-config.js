@@ -32,6 +32,6 @@ module.exports = {
     'gatsby-plugin-react-helmet',
   ],
   siteMetadata: {
-    title: 'Gatsby Material Album',
+    title: 'LeeLees Wreaths & Decor',
   },
 };

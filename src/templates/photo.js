@@ -42,7 +42,7 @@ export default function Work(props) {
         <Toolbar>
           <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            Gatsby Material Album
+            LeeLee's Wreaths & Decor
           </Typography>
         </Toolbar>
       </AppBar>

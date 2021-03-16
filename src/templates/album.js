@@ -59,7 +59,7 @@ export default function Album(props) {
         <Toolbar>
           <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            Gatsby Material Album
+            LeeLee's Wreaths & Decor
           </Typography>
         </Toolbar>
       </AppBar>
@@ -78,7 +78,7 @@ export default function Album(props) {
                       {card.node.fields.exif.title}
                     </Typography>
                     <Typography>
-                      <a href={card.node.fields.exif.copyright}>
+                      <a href={card.node.fields.exif.title}>
                         {card.node.fields.exif.description}
                       </a>
                     </Typography>
@@ -123,7 +123,6 @@ export const pageQuery = graphql`
             exif {
               description
               title
-              copyright
             }
           }
           childImageSharp {

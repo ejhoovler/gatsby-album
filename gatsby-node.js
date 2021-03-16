@@ -77,12 +77,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       .then(exifData => {
         const description = exifData.image.ImageDescription;
         const title = exifData.image.DocumentName;
-        const copyright = exifData.image.Copyright;
 
         createNodeField({
           name: `exif`,
           node,
-          value: { title, description, copyright }
+          value: { title, description }
         });
       })
       .then(() => {
