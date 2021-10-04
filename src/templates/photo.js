@@ -72,7 +72,6 @@ export const pageQuery = graphql`
     file(name: { eq: $slug }) {
       fields {
         exif {
-          description
           title
         }
       }

@@ -79,7 +79,6 @@ export default function Album(props) {
                     </Typography>
                     <Typography>
                       <a href={card.node.fields.exif.title}>
-                        {card.node.fields.exif.description}
                       </a>
                     </Typography>
                   </CardContent>
@@ -121,7 +120,6 @@ export const pageQuery = graphql`
           name
           fields {
             exif {
-              description
               title
             }
           }
