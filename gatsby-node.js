@@ -71,17 +71,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 
   // create custom node fields containing exif data for each image file
-  if (node.internal.mediaType === "image/jpeg") {
+  if (node.internal.mediaType === "image/jpeg" || node.internal.mediaType === "image/jpg" || node.internal.mediaType === "image/heic") {
     fastExif
       .read(node.absolutePath)
       .then(exifData => {
-        const description = exifData.image.ImageDescription;
         const title = exifData.image.DocumentName;
 
         createNodeField({
           name: `exif`,
           node,
-          value: { title, description }
+          value: { title }
         });
       })
       .then(() => {

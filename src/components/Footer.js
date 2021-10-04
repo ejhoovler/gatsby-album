@@ -23,6 +23,7 @@ export default function Footer() {
         <a color="inherit" href="https://material-ui.com/">
           Material-UI
         </a>
+        {"by Elise Hoovler"}
       </Typography>
     </footer>
   );
