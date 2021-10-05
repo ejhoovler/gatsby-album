@@ -15,6 +15,7 @@ module.exports = {
         ignore: [`**/\.*`],
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     'gatsby-plugin-top-layout',

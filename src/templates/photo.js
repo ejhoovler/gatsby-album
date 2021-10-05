@@ -1,7 +1,7 @@
 import React from "react";
 
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
@@ -34,6 +34,7 @@ export default function Work(props) {
   }));
 
   const classes = useStyles();
+  const image = getImage(data.file);
 
   return (
     <>
@@ -59,7 +60,7 @@ export default function Work(props) {
           </Typography>
         </Container>
         <Paper className={classes.root}>
-          <Img fluid={props.data.file.childImageSharp.fluid} />
+          <GatsbyImage image={image} />
         </Paper>
       </Container>
       <Footer />
@@ -72,14 +73,12 @@ export const pageQuery = graphql`
     file(name: { eq: $slug }) {
       fields {
         exif {
-          title
+          title 
         }
       }
       childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          gatsbyImageData(layout: FIXED)
         }
       }
     }
-  }
-`;
+`

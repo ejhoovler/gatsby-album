@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Hero from "../components/Hero.js";
 import Footer from "../components/Footer.js";
@@ -51,6 +51,7 @@ export default function Album(props) {
   }));
 
   const classes = useStyles();
+  const image = getImage(data.file)
 
   return (
     <>
@@ -72,7 +73,7 @@ export default function Album(props) {
             {props.data.allFile.edges.map(card => (
               <Grid item key={card.node.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
-                  <Img fluid={card.node.childImageSharp.fluid} />
+                  <GatsbyImage image={image} />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
                       {card.node.fields.exif.title}
@@ -124,12 +125,10 @@ export const pageQuery = graphql`
             }
           }
           childImageSharp {
-            fluid(maxWidth: 2000, maxHeight: 1700, quality: 100) {
-              ...GatsbyImageSharpFluid
+              gatsbyImageData
             }
           }
         }
       }
     }
-  }
-`;
+`

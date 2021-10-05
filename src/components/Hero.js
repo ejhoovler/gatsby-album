@@ -22,7 +22,7 @@ export default function Hero() {
     <div className={classes.heroContent}>
       <Container maxWidth="sm">
         <Typography
-          component="h1"
+          component="h2"
           variant="h2"
           align="center"
           color="textPrimary"
