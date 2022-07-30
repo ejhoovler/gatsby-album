@@ -19,15 +19,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     'gatsby-plugin-top-layout',
-    {
-      resolve: 'gatsby-plugin-material-ui',
-      options: {
-        //stylesProvider: {
-         //   injectFirst: true,
-        },
-      },
-   // },
-   // 'gatsby-plugin-styled-components',
+    'gatsby-plugin-material-ui',
     'gatsby-plugin-react-helmet',
   ],
   siteMetadata: {

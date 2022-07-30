@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import CameraIcon from "@material-ui/icons/PhotoCamera";
@@ -7,12 +7,13 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Link from "@material-ui/Link"
 import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
-import { graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Hero from "../components/Hero.js";
@@ -43,14 +44,34 @@ export default function Album(props) {
       flexDirection: "column"
     },
     cardMedia: {
-      paddingTop: "50%"
+      paddingTop: "75%"
     },
     cardContent: {
       flexGrow: 1
     }
   }));
 
+  
+    return (
+      <Layout>
+        <h1>Album</h1>
+        <ul>
+          {data.allFile.edges.map((file, index) => {
+            return (
+              <li key={`pdf-${index}`}>
+                <a href={file.node.publicUrl} >
+                  {file.node.name}
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      </Layout>
+    )
+  }
+
   const classes = useStyles();
+
   const image = getImage(data.file)
 
   return (
@@ -73,13 +94,15 @@ export default function Album(props) {
             {props.data.allFile.edges.map(card => (
               <Grid item key={card.node.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
+
                   <GatsbyImage image={image} />
+
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
                       {card.node.fields.exif.title}
                     </Typography>
                     <Typography>
-                      <a href={card.node.fields.exif.title}>
+                      <a href={card.node.fields.exif.description}>
                       </a>
                     </Typography>
                   </CardContent>
@@ -94,7 +117,7 @@ export default function Album(props) {
           </Grid>
         </Container>
       </main>
-      {/*  */}
+      {/*  Footer  */}
       <BottomNav
         numPages={numPages}
         prevPage={prevPage}
@@ -106,10 +129,10 @@ export default function Album(props) {
       <Footer />
     </>
   );
-}
+
 
 export const pageQuery = graphql`
-  query allArtQuery($skip: Int!, $limit: Int!) {
+  query allPicQuery($skip: Int!, $limit: Int!) {
     allFile(
       filter: { extension: { regex: "/(jpg)/" } }
       limit: $limit
@@ -122,6 +145,7 @@ export const pageQuery = graphql`
           fields {
             exif {
               title
+              description
             }
           }
           childImageSharp {

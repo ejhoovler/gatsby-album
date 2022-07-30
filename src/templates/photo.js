@@ -20,7 +20,7 @@ export default function Work(props) {
       marginRight: theme.spacing(2)
     },
     root: {
-      maxWidth: `700px`,
+      maxWidth: `300px`,
       margin: `auto`,
       padding: theme.spacing(1)
     },
@@ -34,7 +34,23 @@ export default function Work(props) {
   }));
 
   const classes = useStyles();
-  const image = getImage(data.file);
+
+  const album = () => {
+    const data = useStaticQuery(graphql`
+      {
+        allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+          edges {
+            node {
+              
+              
+            }
+          }
+        }
+      }
+    `)
+
+      const image = getImage(data.file);
+
 
   return (
     <>
@@ -66,19 +82,4 @@ export default function Work(props) {
       <Footer />
     </>
   );
-}
-
-export const pageQuery = graphql`
-  query workOfArt($slug: String!) {
-    file(name: { eq: $slug }) {
-      fields {
-        exif {
-          title 
-        }
-      }
-      childImageSharp {
-          gatsbyImageData(layout: FIXED)
-        }
-      }
-    }
-`
+  }}
